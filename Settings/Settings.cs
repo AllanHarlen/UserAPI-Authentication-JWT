@@ -8,7 +8,7 @@ namespace UsuarioAPI.Settings
 {
     public static class Settings
     {
-        public static string PrivateKey = "13x2!@#69as8@!#4982&¨##434af6543gd43&%1654679462hgf31kjh567lk645899784184!&@64328af1mvop4542fgh4683135pgdfpjom241675!@#698dfg8$#%49jhk8234%&@5298qsad3";
+        public static string PrivateKey = "13x#434af6543gd43&%1654683135p675!@#698dfg8$#%49jhk8234%&@5298qsad3";
 
         public static string GenerateToken(MyUser user) 
         {

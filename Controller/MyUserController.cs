@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UsuarioAPI.Models;
 using UsuarioAPI.ObjectReverse;
@@ -15,6 +16,7 @@ namespace UsuarioAPI.Controller
             this.dc = context;
         }
 
+
         [HttpPost("login")]
         public async Task<ActionResult<dynamic>> AuthenticateUser([FromBody] MyUser user)
         {
@@ -26,8 +28,11 @@ namespace UsuarioAPI.Controller
             }
 
             var token = Settings.Settings.GenerateToken(user);
+            string teste = $"Autenticado: " + User.Identity.Name;
 
             return new { user = user, token = token };
         }
+
+
     }
 }

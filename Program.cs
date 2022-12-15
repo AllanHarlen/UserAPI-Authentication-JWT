@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Add Authentication JWT.
-var key = Encoding.ASCII.GetBytes(Settings.PrivateKey);
+
+Settings configuracoes = new Settings();
+var key = Encoding.ASCII.GetBytes(configuracoes.PrivateKey);
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -25,7 +27,9 @@ AddJwtBearer(o =>
     o.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key)
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
     };
 });
 

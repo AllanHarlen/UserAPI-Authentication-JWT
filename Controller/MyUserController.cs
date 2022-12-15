@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UsuarioAPI.Models;
 using UsuarioAPI.ObjectReverse;
+using UsuarioAPI.Settings;
 
 namespace UsuarioAPI.Controller
 {
@@ -16,7 +17,6 @@ namespace UsuarioAPI.Controller
             this.dc = context;
         }
 
-
         [HttpPost("login")]
         public async Task<ActionResult<dynamic>> AuthenticateUser([FromBody] MyUser user)
         {
@@ -27,10 +27,10 @@ namespace UsuarioAPI.Controller
                 return NotFound(new { message = "Usuário ou Senha invalidos!" });
             }
 
-            var token = Settings.Settings.GenerateToken(user);
-            string teste = $"Autenticado: " + User.Identity.Name;
+            Settings.Settings configuracoes = new Settings.Settings();
+            var token = configuracoes.GenerateToken(user);
 
-            return new { user = user, token = token };
+            return new { user = user, token = token, data = DateTime.UtcNow};
         }
 
 

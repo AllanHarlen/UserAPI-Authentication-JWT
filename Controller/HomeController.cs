@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UsuarioAPI.Models;
+using UsuarioAPI.ObjectReverse;
 
 namespace UsuarioAPI.Controller
 {
@@ -7,6 +9,7 @@ namespace UsuarioAPI.Controller
     [Route("[controller]")]
     public class HomeController : ControllerBase
     {
+
         [HttpGet("anonymous")]
         [AllowAnonymous]
         public string Anonymous() => "Anonymous";
@@ -17,6 +20,10 @@ namespace UsuarioAPI.Controller
 
         [HttpGet("authenticated")]
         [Authorize]
-        public string Authenticated() => $"Autenticado: " + User.Identity.Name;
+        public string Authenticated() 
+        {
+            return $"Autenticado: " + User.Identity.Name;
+        }
+
     }
 }

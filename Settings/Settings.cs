@@ -6,11 +6,11 @@ using UsuarioAPI.Models;
 
 namespace UsuarioAPI.Settings
 {
-    public static class Settings
+    public class Settings
     {
-        public static string PrivateKey = "13x#434af6543gd43&%1654683135p675!@#698dfg8$#%49jhk8234%&@5298qsad3";
+        public string PrivateKey = "13x#434af6543gd43&%1654683135p675!@#698dfg8$#%49jhk8234%&@5298qsad3";
 
-        public static string GenerateToken(MyUser user) 
+        public string GenerateToken(MyUser user) 
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(PrivateKey);
@@ -23,7 +23,7 @@ namespace UsuarioAPI.Settings
                 }),
 
                 // Expira em 1 Hr o token.
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddMinutes(1),
 
                 // Array de Byts gerados através da PrivateKey.
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -1995,11 +1995,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Meu Computador\\source\\repos\\UsuarioAPI\\UsuarioAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Meu Computador\\source\\repos\\WebAPI JWT RefreshToken\\UsuarioAPI.csproj",
       "projectName": "UsuarioAPI",
-      "projectPath": "C:\\Users\\Meu Computador\\source\\repos\\UsuarioAPI\\UsuarioAPI.csproj",
+      "projectPath": "C:\\Users\\Meu Computador\\source\\repos\\WebAPI JWT RefreshToken\\UsuarioAPI.csproj",
       "packagesPath": "C:\\Users\\Meu Computador\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Meu Computador\\source\\repos\\UsuarioAPI\\obj\\",
+      "outputPath": "C:\\Users\\Meu Computador\\source\\repos\\WebAPI JWT RefreshToken\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Meu Computador\\AppData\\Roaming\\NuGet\\NuGet.Config",

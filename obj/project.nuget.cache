@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zFnhft7E6lftoKIjbDLuJjHpVhWuerW24+dpXuG5bkLDQiHh4n+DJFA1wpa0BVDmmMB34cP+scHkckLPTNDUDA==",
+  "dgSpecHash": "GPqta4WW2N06SWjAJNbHg3QCPwnfAmZmGPNn9PjeNsYO+dx4cncm6Spo+/Z0hy+w6hMJmgeAJtY1PZZ2YGnnyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Meu Computador\\source\\repos\\UsuarioAPI\\UsuarioAPI.csproj",
+  "projectFilePath": "C:\\Users\\Meu Computador\\source\\repos\\WebAPI JWT RefreshToken\\UsuarioAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Meu Computador\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Meu Computador\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

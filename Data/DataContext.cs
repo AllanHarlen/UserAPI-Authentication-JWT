@@ -1,53 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using UsuarioAPI.Models;
 
 namespace UsuarioAPI.ObjectReverse;
 
 public partial class DataContext : DbContext
 {
-    public DataContext()
-    {
-    }
+    private readonly IConfiguration _configuration;
 
-    public DataContext(DbContextOptions<DataContext> options)
+    public DataContext(DbContextOptions<DataContext> options, IConfiguration configuration)
         : base(options)
     {
+        _configuration = configuration;
     }
 
     public virtual DbSet<MyUser> MyUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=Server;initial catalog=my_admin;uid=root;pwd=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.6-mariadb"));
+    {
+        if (!optionsBuilder.IsConfigured && _configuration != null)
+        {
+            var connectionString = _configuration.GetConnectionString("conexaoSQLServer");
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .UseCollation("utf8_general_ci")
-            .HasCharSet("utf8");
-
         modelBuilder.Entity<MyUser>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("my_users");
-
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
-                .HasColumnType("int(11)");
+                .HasColumnType("int");
             entity.Property(e => e.Empresa)
                 .HasMaxLength(50)
-                .HasDefaultValueSql("''");
+                .HasDefaultValue("");
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
-                .HasDefaultValueSql("''");
+                .HasDefaultValue("");
             entity.Property(e => e.Role)
                 .HasMaxLength(50)
-                .HasDefaultValueSql("''");
+                .HasDefaultValue("");
             entity.Property(e => e.UserName)
                 .HasMaxLength(50)
-                .HasDefaultValueSql("''");
+                .HasDefaultValue("");
         });
 
         OnModelCreatingPartial(modelBuilder);

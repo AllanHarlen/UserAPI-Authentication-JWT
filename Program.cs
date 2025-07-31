@@ -37,11 +37,11 @@ AddJwtBearer(o =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Injection Dependency MySql
-var connectionString = builder.Configuration.GetConnectionString("conexaoMySQL");
+// Injection Dependency SQL Server
+var connectionString = builder.Configuration.GetConnectionString("conexaoSQLServer");
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseMySql(ServerVersion.AutoDetect(connectionString));
+    options.UseSqlServer(connectionString);
 });
 
 

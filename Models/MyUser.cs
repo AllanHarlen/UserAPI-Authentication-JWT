@@ -14,4 +14,16 @@ public partial class MyUser
     public string Role { get; set; } = null!;
 
     public string Empresa { get; set; } = null!;
+
+    // Método para criação de usuário
+    public static MyUser CreateUser(string userName, string password, string role, string empresa)
+    {
+        return new MyUser
+        {
+            UserName = userName,
+            Password = password,
+            Role = role,
+            Empresa = empresa
+        };
+    }
 }
